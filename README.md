@@ -24,11 +24,11 @@ De afdeling ICT is een onderdeel van het MID college. Het MID College is één v
     <li><a href="https://laravel.com/">Laravel</a></li>
 </li>
 
-## Gemaakt met
+### Gemaakt met
 
 * [Laravel](https://laravel.com/) - The web library used
 
-## Auteurs
+### Auteurs
 
 * **Bradley Oosterveen** - *Developer* - [Dakpaneel](https://github.com/Dakpaneel)
 * **Thomas van de Visch** - *Developer* - [Standaard-boos](https://github.com/Standaard-boos)
