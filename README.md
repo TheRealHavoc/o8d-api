@@ -26,7 +26,7 @@ De afdeling ICT is een onderdeel van het MID college. Het MID College is één v
 
 ## Gemaakt met
 
-* [Laravel](https://laravel.com/) - The web library used
+* [Laravel](https://laravel.com/) - libray
 
 ## Auteurs
 
