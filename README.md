@@ -22,7 +22,7 @@ De afdeling ICT is een onderdeel van het MID college. Het MID College is één v
     <li><a href="https://www.php.net/downloads.php">PHP ^7.2.5</a></li>
     <li><a href="https://getcomposer.org/">Composer</a></li>
     <li><a href="https://laravel.com/">Laravel</a></li>
-</li>
+</ul>
 
 ## Gemaakt met
 
