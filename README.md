@@ -35,5 +35,3 @@ De afdeling ICT is een onderdeel van het MID college. Het MID College is één v
 * **Floris Verdoorn** - *Developer* - [flowwdelapro](https://github.com/flowwdelapro)
 * **Gerben Schipper** - *Developer* - [Gschipper](https://github.com/Gschipper)
 * **Julian Pasker** - *Developer* - [Juliandroid98](https://github.com/Juliandroid98)
-
-<p align="center"><img src="https://www.rocmn.nl/themes/custom/rocmn/logo.svg?v=1570171176" width="400"></p>
