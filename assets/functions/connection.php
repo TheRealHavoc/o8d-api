@@ -1,12 +1,14 @@
 <?php
-$servername = "185.227.81.30";
+$db = "mysql:host=185.227.81.30;dbname=runecher_ouderavond";
 $username = "runecher_ouderavond";
 $password = "Eq1rgNmkJr";
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=runecher_ouderavond", $username, $password);
+    $conn = new PDO($db, $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    echo "Connected!";
 }
 catch(PDOException $e)
 {
