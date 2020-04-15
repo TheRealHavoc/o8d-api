@@ -4,7 +4,7 @@
      * 
      * Handles the connection with the database
      */
-    require_once('app/core/database.php');
+    require_once ('app/core/database.php');
 
     $db = new Database();
 
@@ -16,9 +16,7 @@
     require_once('app/core/routing.php');
 
     /**
-     * Requested page
+     * Handle request
      */
-    $response = (isset($response) ? $response : 'pages/error.php');
-
-    require_once($response);
+    require_once('app/core/request.php');
 ?>

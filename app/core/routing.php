@@ -3,13 +3,12 @@
     $url = array_slice(explode("/", $_SERVER['REQUEST_URI']), 1);
 
     switch($url[0]) {
-
-        case 'api':
-            $response = 'pages/api.php';
+        case '':
+            $response = 'pages/index.php';
             break;
 
         default:
-            $response = 'pages/docs.php';
+            $response = 'pages/error/404.php';
         break;
     }
 ?>
