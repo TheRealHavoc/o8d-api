@@ -16,5 +16,5 @@
     /**
      * Requested page
      */
-    require_once($requestedPage);
+    require_once($response);
 ?>
