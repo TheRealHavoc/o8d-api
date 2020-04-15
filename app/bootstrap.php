@@ -1,5 +1,10 @@
 <?php
     /**
+     * Includes config file
+     */
+    require_once('_config/config.php');
+
+    /**
      * Handles response
      */
     require_once ('app/functions/response.php');
