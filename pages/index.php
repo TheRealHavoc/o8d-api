@@ -3,5 +3,7 @@
 
     //TODO
 
-    Response::go($data);
+    Response::go(
+        ['result' => $data]
+    );
 ?>

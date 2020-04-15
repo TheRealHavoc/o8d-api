@@ -16,7 +16,10 @@
             }
             catch(PDOException $e)
             {
-                echo "Connection failed: " . $e->getMessage();
+                Response::go(
+                    ['error' => $e->getMessage()],
+                    500
+                );
             }
 
             return $conn;

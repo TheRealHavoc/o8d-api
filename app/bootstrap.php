@@ -1,5 +1,10 @@
 <?php
     /**
+     * Handles response
+     */
+    require_once ('app/functions/response.php');
+
+    /**
      * Database connection
      * 
      * Handles the connection with the database
