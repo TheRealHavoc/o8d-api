@@ -7,14 +7,14 @@
     /**
      * Handles response
      */
-    require_once ('app/functions/response.php');
+    require_once('app/functions/Response.php');
 
     /**
      * Database connection
      * 
      * Handles the connection with the database
      */
-    require_once ('app/core/database.php');
+    require_once('app/core/Database.php');
 
     $db = new Database();
 
