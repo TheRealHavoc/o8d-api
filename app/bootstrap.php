@@ -13,7 +13,7 @@
      * 
      * Handles requesting routes
      */
-    require_once('app/core/routing.php');
+    require_once('app/core/router.php');
 
     /**
      * Handle request

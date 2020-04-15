@@ -7,7 +7,7 @@
 
         require_once ('app/functions/response.php');
     } else {
-        $response = 'base/pages/error.php';
+        $response = 'pages/error/error.php';
     }
 
     require_once($response);
