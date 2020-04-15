@@ -1,3 +1,7 @@
 <?php
-    echo basename(__FILE__);
+    $filename = basename(__FILE__);
+
+    // Functions
+
+    Response::go($filename);
 ?>
