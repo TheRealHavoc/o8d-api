@@ -8,5 +8,5 @@
      * 
      * Loads in all required php functions.
      */
-    require('assets/bootstrap.php');
+    require('app/bootstrap.php');
 ?>
