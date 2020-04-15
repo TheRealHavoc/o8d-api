@@ -1,3 +1,10 @@
 <?php
-    echo basename(__FILE__);
+    $data = (object) array();
+
+    //TODO
+
+    Response::go(
+        ['error' => 'Not found'],
+        404
+    );
 ?>
