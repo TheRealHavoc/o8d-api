@@ -1,7 +1,7 @@
 <?php
-    $filename = basename(__FILE__);
+    $data = (object) array();
 
-    // Functions
+    //TODO
 
-    Response::go($filename);
+    Response::go($data);
 ?>
