@@ -6,7 +6,7 @@
     /**
      * Bootstrap
      * 
-     * Loads in all required php functions.
+     * Loads in all required php helpers.
      */
     require('app/bootstrap.php');
 ?>

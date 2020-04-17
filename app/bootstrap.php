@@ -5,9 +5,10 @@
     require_once('_config/config.php');
 
     /**
-     * Handles response
+     * Include helpers
      */
-    require_once('app/functions/Response.php');
+    require_once('app/helpers/Response.php');
+    require_once('app/helpers/Token.php');
 
     /**
      * Database connection
