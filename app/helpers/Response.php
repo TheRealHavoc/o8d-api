@@ -1,6 +1,10 @@
 <?php
     class Response
     {
+        /**
+         * @param $data
+         * @param int $http_response_code
+         */
         public static function go($data, $http_response_code = 200)
         {
             header("Access-Control-Allow-Origin: *");

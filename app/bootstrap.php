@@ -16,7 +16,6 @@
      * Handles the connection with the database
      */
     require_once('app/core/Database.php');
-
     $db = new Database();
 
     /**
@@ -24,7 +23,10 @@
      * 
      * Handles requesting routes
      */
-    require_once('app/core/router.php');
+    require_once('app/core/Router.php');
+    $router = new Router();
+
+    require_once('routes/api.php');
 
     /**
      * Handle request

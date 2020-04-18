@@ -1,6 +1,9 @@
 <?php
     class Database
     {
+        /**
+         * Database constructor.
+         */
         public function __construct()
         {
             $conn = null;
