@@ -3,6 +3,12 @@
 # Planningstool Ouderavond
 De afdeling ICT is een onderdeel van het MID college. Het MID College is één van de 12 Colleges van ROCMN. Op deze afdeling zitten ongeveer 350 studenten. 3-4 keer per jaar organiseert de afdeling een oudergespreksavond om ouders in de gelegenheid te stellen in gesprek te gaan met de studentcoach over de voortgang van de student.
 
+De hoofzaak van de tool is dat ouders een uitnodiging krijgen met instructies. Vervolgens moeten zij
+op een webpagina een tijdstip kunnen kiezen voor het gesprek. Dit tijdstip moet achteraf gewijzigd
+kunnen worden door de ouders en docenten. Vervolgens moeten er diverse overzicht uitgedraaid
+kunnen worden zodat studentcoaches weten wie er wanneer verwacht wordt en in welk lokaal ze
+zitten.
+
 ## Aan de slag
 <ul>
     <li>Installeer <a href="https://www.php.net/downloads">PHP</a>;</li>
@@ -11,8 +17,16 @@ De afdeling ICT is een onderdeel van het MID college. Het MID College is één v
     <li>Vul de juiste gegevens in.</li>
 </ul>
 
-## Auteurs
+## Hoe het werkt
+<ol>
+    <li>Het begint allemaal bij "index.php" in de root folder. Hier wordt het bestand "bootstrap.php" ingeladen.</li>
+    <li>"Bootstrap.php" laad alle benodigde bestanden in, zoals de database connectie, de routing, en eventuele hulp functies.</li>
+    <li>De folder "routes" in de root folder van het project bevat het bestand waar je routes kan registreren. Door deze te registreren geef je aan welke pagina wordt ingeladen als de gebruiker naar een bepaalde route navigeerd.</li>
+    <li>In de folder "pages" kan je pagina's plaatsen die worden geladen als de gebruiker naar de desbetreffende route navigeerd. Deze bestanden kunnen alle logica bevatten om de gewenste data naar de gebruiker te sturen.</li>
+</ol>
 
+
+## Auteurs
 * **Thomas van de Visch** - *Developer* - [Standaard-boos](https://github.com/Standaard-boos)
 * **Floris Verdoorn** - *Developer* - [flowwdelapro](https://github.com/flowwdelapro)
 * **Gerben Schipper** - *Developer* - [Gschipper](https://github.com/Gschipper)
