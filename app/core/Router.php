@@ -14,11 +14,13 @@
 
             $params = (isset($url[1]) ? $url[1] : '');
 
-            if($url[0] != $route) {
-                return $this->page = 'pages/error/404.php';
+            if(substr($route, 0, 1) !== '/') {
+                $route = '/' . $route;
             }
 
-            return $this->page = $page;
+            if($url[0] === $route) {
+                $this->page = $page;
+            }
         }
     }
 ?>
