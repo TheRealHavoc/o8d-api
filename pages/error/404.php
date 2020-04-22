@@ -3,8 +3,8 @@
 
     //TODO
 
-    Response::go(
-        ['error' => 'Not found'],
+    Response::error(
+        "Page not found.",
         404
     );
 ?>
