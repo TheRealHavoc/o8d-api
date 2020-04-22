@@ -3,7 +3,14 @@
 
     $data->file = basename(__FILE__);
 
-    Response::go(
-        ['result' => $data]
-    );
+    if($data) {
+        Response::success(
+            $data
+        );
+    } else {
+        Response::error(
+            "Could not find requested data.",
+            404
+        );
+    }
 ?>
