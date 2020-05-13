@@ -29,7 +29,23 @@
             } else {
                 return false;   
             }
+        }
 
+        public function deleteDate(){
+            $sql = $this->conn->prepare("SELECT * FROM calendar WHERE id = ?");
+
+            if(!$sql->execute(array($_POST['id'])))
+                Response::error("Something went wrong.", 500);
+
+            if(!$res = $sql->fetch())
+                Response::error("Could not find resource.", 404);
+
+            $sql = $this->conn->prepare("DELETE FROM calendar WHERE id = ?");
+
+            if(!$sql->execute(array($_POST['id'])))
+                Response::error("Something went wrong.", 500);
+
+            Response::success("Resource deleted.");
         }
     }
 ?>
