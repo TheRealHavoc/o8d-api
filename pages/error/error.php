@@ -3,8 +3,8 @@
 
     //TODO
 
-    Response::go(
-        ['error' => 'Something went wrong.'],
+    Response::error(
+        "Something went wrong.",
         500
     );
 ?>
