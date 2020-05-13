@@ -22,13 +22,9 @@
         }
 
         public function insertDate(){
-            $name = $_POST['name'];
-            $date = $_POST['date'];
-            $room = $_POST['room'];
+            $sql = $this->conn->prepare("INSERT INTO calendar (student_id, date, time, room) VALUES (?, ?, ?, ?)");
 
-            $sql = $this->conn->prepare("INSERT INTO calendar (name, date, room) VALUES (?, ?, ?)");
-
-            if($sql->execute(array($_POST['name'], $_POST['date'], $_POST['room']))){
+            if($sql->execute(array($_POST['student_id'], $_POST['date'], $_POST['time'],  $_POST['room']))){
                 return true;
             } else {
                 return false;   
