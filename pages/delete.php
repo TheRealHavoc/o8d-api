@@ -1,16 +1,14 @@
 <?php
+    /**
+     * Include controllers
+     */
+    require_once('app/controllers/CalendarController.php');
 
-    $data = $db->deleteDate();
-
-    if($data) {
-        Response::success(
-            $data
-        );
+    if($calendarController->deleteDate()) {
+        Response::success("Resource deleted.");
     } else {
         Response::error(
             "Something went wrong",
             404
         );
     }
-
-?>
