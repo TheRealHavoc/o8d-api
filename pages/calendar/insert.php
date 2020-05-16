@@ -5,7 +5,7 @@
     require_once('app/controllers/CalendarController.php');
 
     if($calendarController->insertDate()) {
-        Response::success("Resource edited.");
+        Response::success("Resource added.");
     } else {
         Response::error(
             "Something went wrong",
