@@ -15,16 +15,14 @@
                 Response::error("Something went wrong.", 500);
 
             if($res = $sql->fetch())
-                Response::error("Student is alreayd planned in.", 404);
-
+                Response::error("Student is already planned in.", 404);
 
             $sql = $this->conn->prepare("INSERT INTO calendar (student_id, date, time, room) VALUES (?, ?, ?, ?)");
 
-            if($sql->execute(array($_POST['student_id'], $_POST['date'], $_POST['time'],  $_POST['room']))){
-                return true;
-            } else {
-                return false;
-            }
+            if(!$sql->execute(array($_POST['student_id'], $_POST['date'], $_POST['time'],  $_POST['room'])))
+                Response::error("Something went wrong.", 500);
+
+            return true;
         }
 
         public function deleteDate(){
@@ -58,7 +56,7 @@
             if(!$sql->execute(array($_POST['date'], $_POST['time'], $_POST['room'], $_POST['id'])))
                 Response::error("Something went wrong.", 500);
 
-            Response::success("Resource updated.");
+            return true;
         }
     }
 
