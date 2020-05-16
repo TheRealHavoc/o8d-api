@@ -3,12 +3,26 @@
     {
         private $conn;
 
+        /**
+         * CalendarController constructor.
+         * @param $db
+         */
         public function __construct($db)
         {
             $this->conn = $db->conn;
         }
 
+        /**
+         * @return bool
+         */
         public function insertDate(){
+            if (
+                !isset($_POST['student_id']) ||
+                !isset($_POST['date']) ||
+                !isset($_POST['time']) ||
+                !isset($_POST['room'])
+            ) Response::error("Not enough form data.", 400);
+
             $sql = $this->conn->prepare("SELECT * FROM calendar WHERE student_id = ?");
 
             if(!$sql->execute(array($_POST['student_id'])))
@@ -25,7 +39,13 @@
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public function deleteDate(){
+            if (!isset($_POST['id']))
+                Response::error("Not enough form data.", 400);
+
             $sql = $this->conn->prepare("SELECT * FROM calendar WHERE id = ?");
 
             if(!$sql->execute(array($_POST['id'])))
@@ -42,7 +62,17 @@
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public function editDate(){
+            if (
+                !isset($_POST['student_id']) ||
+                !isset($_POST['date']) ||
+                !isset($_POST['time']) ||
+                !isset($_POST['room'])
+            ) Response::error("Not enough form data.", 400);
+
             $sql = $this->conn->prepare("SELECT * FROM calendar WHERE id = ?");
 
             if(!$sql->execute(array($_POST['id'])))
