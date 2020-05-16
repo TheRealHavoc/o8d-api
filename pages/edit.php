@@ -1,16 +1,14 @@
 <?php
+    /**
+     * Include controllers
+     */
+    require_once('app/controllers/CalendarController.php');
 
-    $data = $db->editDate();
-
-    if($data) {
-        Response::success(
-            $data
-        );
+    if($calendarController->editDate()) {
+        Response::success("Resource edited.");
     } else {
         Response::error(
             "Something went wrong",
             404
         );
     }
-
-?>
