@@ -46,24 +46,28 @@ zitten.
     <br/>
     Request: POST
     <br/>
+    Header: token
     Body: student_id, date, time, room
 
 *   <b>/calendar/delete</b>
     <br/>
     Request: POST
     <br/>
+    Header: token
     Body: id
 
 *   <b>/calendar/edit</b>
     <br/>
     Request: POST
     <br/>
+    Header: token
     Body: student_id, date, time, room
     
 *   <b>/admin/createnewuser</b>
     <br/>
     Request: POST
     <br/>
+    Header: token
     Body: email, password, firstname, insertion, lastname, role
     
 Laatste update: 17/05/2020 Om 16:08
