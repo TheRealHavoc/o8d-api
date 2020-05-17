@@ -7,6 +7,7 @@
     /**
      * Include helpers
      */
+    require_once('app/helpers/Auth.php');
     require_once('app/helpers/Response.php');
     require_once('app/helpers/Token.php');
 

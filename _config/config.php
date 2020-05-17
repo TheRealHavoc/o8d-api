@@ -1,8 +1,8 @@
 <?php
-    define('SQL_HOST', '185.227.81.30');
-    define('SQL_DATABASE', 'runecher_ouderavond');
-    define('SQL_USER', 'runecher_ouderavond');
-    define('SQL_PASSWORD', 'Eq1rgNmkJr');
+    define('SQL_HOST', 'bradlim299.299.axc.nl');
+    define('SQL_DATABASE', 'bradlim299_o8d');
+    define('SQL_USER', 'bradlim299_o8d');
+    define('SQL_PASSWORD', 'FmRs2mRk36');
 
     define('APP_KEY', '');
 ?>

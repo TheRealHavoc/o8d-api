@@ -14,7 +14,7 @@
             }
             catch(PDOException $e)
             {
-                Response::go(
+                Response::error(
                     ['error' => $e->getMessage()],
                     500
                 );
