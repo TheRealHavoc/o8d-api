@@ -25,6 +25,48 @@ zitten.
     <li>In de folder "pages" kan je pagina's plaatsen die worden geladen als de gebruiker naar de desbetreffende route navigeerd. Deze bestanden kunnen alle logica bevatten om de gewenste data naar de gebruiker te sturen.</li>
 </ol>
 
+## Endpoints
+<b>Host:</b> https://o8d-api.bradleyoosterveen.nl
+
+<b>Routes:</b>
+
+*   <b>/signin</b>
+    <br/>
+    Request: POST
+    <br/>
+    Body: email, password
+
+*   <b>/signout</b>
+    <br/>
+    Request: GET
+    <br/>
+    Header: token
+
+*   <b>/calendar/insert</b>
+    <br/>
+    Request: POST
+    <br/>
+    Body: student_id, date, time, room
+
+*   <b>/calendar/delete</b>
+    <br/>
+    Request: POST
+    <br/>
+    Body: id
+
+*   <b>/calendar/edit</b>
+    <br/>
+    Request: POST
+    <br/>
+    Body: student_id, date, time, room
+    
+*   <b>/admin/createnewuser</b>
+    <br/>
+    Request: POST
+    <br/>
+    Body: email, password, firstname, insertion, lastname, role
+    
+Laatste update: 17/05/2020 Om 16:08
 
 ## Auteurs
 * **Thomas van de Visch** - *Developer* - [Standaard-boos](https://github.com/Standaard-boos)
