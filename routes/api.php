@@ -11,4 +11,5 @@
     $router->url('calendar/insert', 'pages/calendar/insert.php');
     $router->url('calendar/delete', 'pages/calendar/delete.php');
     $router->url('calendar/edit', 'pages/calendar/edit.php');
+    $router->url('user/create', 'pages/user/create.php');
 ?>
