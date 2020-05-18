@@ -88,7 +88,7 @@ zitten.
     
 *   <b>/meeting/addwithusers</b>
     <br/>
-    Beschrijving: Registreren van een ouderavond en linken van ouders aan ouderavond.
+    Beschrijving: Registreren van een ouderavond en linken van gebruikers aan ouderavond.
     <br/>
     Request: POST
     <br/>
