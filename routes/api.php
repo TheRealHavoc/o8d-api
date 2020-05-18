@@ -24,6 +24,7 @@
     $router->url('meeting/add', 'pages/meeting/add.php');
     $router->url('meeting/cancel', 'pages/meeting/cancel.php');
     $router->url('meeting/addwithusers', 'pages/meeting/addwithusers.php');
+    $router->url('meeting/index', 'pages/meeting/index.php');
 
     /**
      * Block
