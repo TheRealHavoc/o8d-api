@@ -144,7 +144,7 @@ zitten.
     <br/>
     Body: email, password, firstname, insertion, lastname, role
     
-Laatste update: 18/05/2020 Om 19:11
+Laatste update: 18/05/2020 Om 22:36
 
 ## Auteurs
 * **Thomas van de Visch** - *Developer* - [Standaard-boos](https://github.com/Standaard-boos)
