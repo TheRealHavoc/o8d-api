@@ -140,6 +140,8 @@ zitten.
     <br/>
     Request: POST
     <br/>
+    Header: token
+    <br/>
     Body: email, password, firstname, insertion, lastname, role
     
 Laatste update: 18/05/2020 Om 22:36
