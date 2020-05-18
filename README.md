@@ -76,6 +76,14 @@ zitten.
     <br/>
     Body: student_id, date, time, room
     
+*   <b>/meeting/index</b>
+    <br/>
+    Beschrijving: Tonen van ouderavonden.
+    <br/>
+    Request: GET
+    <br/>
+    Header: token
+    
 *   <b>/meeting/add</b>
     <br/>
     Beschrijving: Registreren van een ouderavond.
