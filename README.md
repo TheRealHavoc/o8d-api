@@ -32,45 +32,111 @@ zitten.
 
 *   <b>/signin</b>
     <br/>
+    Beschrijving: Voor het inloggen van gebruikers.
+    <br/>
     Request: POST
     <br/>
     Body: email, password
 
 *   <b>/signout</b>
     <br/>
+    Beschrijving: Voor het uitloggen van gebruikers.
+    <br/>
     Request: GET
     <br/>
     Header: token
 
-*   <b>/calendar/insert</b>
+*   <b>/calendar/insert (WILL BE REPLACED)</b>
+    <br/>
+    Beschrijving: Toevoegen van een calender item.
     <br/>
     Request: POST
     <br/>
     Header: token
+    <br/>
     Body: student_id, date, time, room
 
-*   <b>/calendar/delete</b>
+*   <b>/calendar/delete (WILL BE REPLACED)</b>
+    <br/>
+    Beschrijving: Verwijderen van een calender item.
     <br/>
     Request: POST
     <br/>
     Header: token
+    <br/>
     Body: id
 
-*   <b>/calendar/edit</b>
+*   <b>/calendar/edit (WILL BE REPLACED)</b>
+    <br/>
+    Beschrijving: Bewerken van een calender item.
     <br/>
     Request: POST
     <br/>
     Header: token
+    <br/>
     Body: student_id, date, time, room
+    
+*   <b>/meeting/add</b>
+    <br/>
+    Beschrijving: Registreren van een ouderavond.
+    <br/>
+    Request: POST
+    <br/>
+    Header: token
+    <br/>
+    Body: date (yyyy-mm-dd), startTime (hh:mm:ss), endTime (hh:mm:ss), coach (userId), room
+    
+*   <b>/meeting/addwithusers</b>
+    <br/>
+    Beschrijving: Registreren van een ouderavond en linken van gebruikers aan ouderavond.
+    <br/>
+    Request: POST
+    <br/>
+    Header: token
+    <br/>
+    Body: date (yyyy-mm-dd), startTime (hh:mm:ss), endTime (hh:mm:ss), coach (userId), room, users (json array met user id's: "[4,6,8,9]")
+    
+*   <b>/meeting/cancel</b>
+    <br/>
+    Beschrijving: Het annuleren van een ouderavond.
+    <br/>
+    Request: POST
+    <br/>
+    Header: token
+    <br/>
+    Body: id
+    
+*   <b>/block/add</b>
+    <br/>
+    Beschrijving: Voor het toevoegen van een gebruiker aan een gesprek binnen een ouderavond.
+    <br/>
+    Request: POST
+    <br/>
+    Header: token
+    <br/>
+    Body: meetingID, startTime (hh:mm:ss), endTime (hh:mm:ss)
+    
+*   <b>/block/setUnavailable</b>
+    <br/>
+    Beschrijving: Onbeschikbaar zetten van een gebruiker van een ouderavond.
+    <br/>
+    Request: POST
+    <br/>
+    Header: token
+    <br/>
+    Body: id (meetingID)
     
 *   <b>/admin/createnewuser</b>
     <br/>
+    Beschrijving: Aanmaken van een nieuwe gebruiker.
+    <br/>
     Request: POST
     <br/>
     Header: token
+    <br/>
     Body: email, password, firstname, insertion, lastname, role
     
-Laatste update: 17/05/2020 Om 16:08
+Laatste update: 18/05/2020 Om 19:11
 
 ## Auteurs
 * **Thomas van de Visch** - *Developer* - [Standaard-boos](https://github.com/Standaard-boos)

@@ -12,3 +12,4 @@
             $this->conn = $db->conn;
         }
     }
+    $Controller = new Controller($db);

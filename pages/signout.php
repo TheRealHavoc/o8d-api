@@ -6,11 +6,7 @@
 
     $auth = Auth::authenticateByToken($db);
 
-    if($userController->signout($auth['id'])) {
-        Response::success("User signed out.");
-    } else {
-        Response::error(
-            "Something went wrong.",
-            500
-        );
-    }
+    if(!$userController->signout($auth['id']))
+        Response::error("Something went wrong",500);
+
+Response::success("User signed out.");
