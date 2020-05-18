@@ -3,14 +3,8 @@
 
     $data->file = basename(__FILE__);
 
-    if($data) {
-        Response::success(
-            $data
-        );
-    } else {
-        Response::error(
-            "Could not find requested data.",
-            404
-        );
-    }
+    if(!$data)
+        Response::error("Could not find requested data.",404);
+
+    Response::success($data);
 ?>

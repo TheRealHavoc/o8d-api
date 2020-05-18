@@ -1,10 +1,12 @@
 <?php
+    $auth = Auth::authenticateByToken($db, 3);
+
     /**
      * Include controllers
      */
     require_once('app/controllers/UserController.php');
 
-    $auth = Auth::authenticateByToken($db, 3);
+    if(!$userController->createNewUser())
+        Response::error("Something went wrong",500);
 
-    if($userController->createNewUser())
-        Response::success("New user created.");
+    Response::success("New user created.");
