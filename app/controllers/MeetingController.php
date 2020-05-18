@@ -12,6 +12,29 @@
             $this->conn = $db->conn;
         }
 
+        public function index($userID, $role)
+        {
+            if($role == 1) {
+                $q = "SELECT * FROM `meetings` INNER JOIN `blocks` ON `meetings`.`id` = `blocks`.`meeting_id` WHERE `blocks`.`user_id` = :userID";
+
+                $sql = $this->conn->prepare($q);
+
+                $sql->bindParam(':userID', $userID);
+            } else {
+                $q = "SELECT * FROM `meetings`";
+
+                $sql = $this->conn->prepare($q);
+            }
+
+            if(!$sql->execute())
+                Response::error("Something went wrong", 500);
+
+            if(!$res = $sql->fetchAll())
+                Response::error("Could not find meetings linked to user.", 404);
+
+            return $res;
+        }
+
         /**
          * @return bool
          */
