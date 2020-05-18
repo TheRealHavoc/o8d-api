@@ -19,6 +19,18 @@
     $router->url('calendar/edit', 'pages/calendar/edit.php');
 
     /**
+     * Meeting
+     */
+    $router->url('meeting/add', 'pages/meeting/add.php');
+    $router->url('meeting/cancel', 'pages/meeting/cancel.php');
+    $router->url('meeting/addwithusers', 'pages/meeting/addwithusers.php');
+
+    /**
+     * Block
+     */
+    $router->url('block/add', 'pages/block/add.php');
+
+    /**
      * Admin
      */
     $router->url('admin/createnewuser', 'pages/admin/createnewuser.php');
