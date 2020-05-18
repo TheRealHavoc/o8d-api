@@ -12,6 +12,10 @@
 
             $request->headers = getallheaders();
 
+            if(!isset($request->headers['token'])) {
+                $request->headers['token'] = $_POST['token'];
+            }
+
             $sql = $db->conn->prepare('SELECT `id`, `token`, `role` FROM `users` WHERE `token` = :token');
             $sql->bindParam(':token', $request->headers['token']);
 
