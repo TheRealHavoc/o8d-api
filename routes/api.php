@@ -32,7 +32,11 @@
     $router->url('block/add', 'pages/block/add.php');
 
     /**
+     * User
+     */
+    $router->url('user/index', 'pages/user/index.php');
+
+    /**
      * Admin
      */
     $router->url('admin/createnewuser', 'pages/admin/createnewuser.php');
-?>

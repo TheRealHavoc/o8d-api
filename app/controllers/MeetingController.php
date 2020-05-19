@@ -12,6 +12,11 @@
             $this->conn = $db->conn;
         }
 
+        /**
+         * @param $userID
+         * @param $role
+         * @return mixed
+         */
         public function index($userID, $role)
         {
             if($role == 1) {
