@@ -35,8 +35,13 @@
             $sql->bindParam(':startTime', $_POST['startTime']);
             $sql->bindParam(':endTime', $_POST['endTime']);
 
-            if(!$sql->execute())
-                Response::error("Something went wrong", 500);
+            try {
+                $sql->execute();
+            }
+            catch(PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
 
             return true;
         }
@@ -58,8 +63,13 @@
             $sql = $this->conn->prepare($q);
             $sql->bindParam(':id', $_POST['id']);
 
-            if(!$sql->execute())
-                Response::error("Something went wrong", 500);
+            try {
+                $sql->execute();
+            }
+            catch(PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
 
             return true;
         }
@@ -80,8 +90,13 @@
 
             $sql = $this->conn->prepare($q);
 
-            if(!$sql->execute())
-                Response::error("Something went wrong", 500);
+            try {
+                $sql->execute();
+            }
+            catch(PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
 
             return true;
         }
