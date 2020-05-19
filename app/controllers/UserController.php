@@ -87,8 +87,13 @@
             $sql->bindParam(':email', $params->email);
             $sql->bindParam(':role', $params->role);
 
-            if(!$sql->execute())
-                Response::error("Something went wrong", 500);
+            try {
+                $sql->execute();
+            }
+            catch(PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
 
             return true;
         }
@@ -101,8 +106,13 @@
             $sql->bindParam(':token', $token);
             $sql->bindParam(':id', $id);
 
-            if(!$sql->execute())
-                Response::error("Something went wrong", 500);
+            try {
+                $sql->execute();
+            }
+            catch(PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
 
             return true;
         }
@@ -114,8 +124,13 @@
             $sql = $this->conn->prepare($query);
             $sql->bindParam(':email', $email);
 
-            if(!$sql->execute())
-                Response::error("Something went wrong", 500);
+            try {
+                $sql->execute();
+            }
+            catch(PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
 
             return $sql->fetch(PDO::FETCH_ASSOC);
         }

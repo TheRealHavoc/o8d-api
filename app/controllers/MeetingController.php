@@ -26,8 +26,13 @@
                 $sql = $this->conn->prepare($q);
             }
 
-            if(!$sql->execute())
-                Response::error("Something went wrong", 500);
+            try {
+                $sql->execute();
+            }
+            catch(PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
 
             if(!$res = $sql->fetchAll())
                 Response::error("Could not find meetings linked to user.", 404);
@@ -62,8 +67,13 @@
             $sql->bindParam(':coach', $_POST['coach']);
             $sql->bindParam(':room', $_POST['room']);
 
-            if(!$sql->execute())
-                Response::error("Something went wrong", 500);
+            try {
+                $sql->execute();
+            }
+            catch(PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
 
             return $this->conn->lastInsertId();
         }
@@ -85,8 +95,13 @@
             $sql = $this->conn->prepare($q);
             $sql->bindParam(':id', $_POST['id']);
 
-            if(!$sql->execute())
-                Response::error("Something went wrong", 500);
+            try {
+                $sql->execute();
+            }
+            catch(PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
 
             return true;
         }
