@@ -44,7 +44,7 @@ zitten.
     <br/>
     Request: GET
     <br/>
-    Header: token
+    Auth: token
 
 *   <b>/calendar/insert (WILL BE REPLACED)</b>
     <br/>
@@ -52,7 +52,7 @@ zitten.
     <br/>
     Request: POST
     <br/>
-    Header: token
+    Auth: token
     <br/>
     Body: student_id, date, time, room
 
@@ -62,7 +62,7 @@ zitten.
     <br/>
     Request: POST
     <br/>
-    Header: token
+    Auth: token
     <br/>
     Body: id
 
@@ -72,7 +72,7 @@ zitten.
     <br/>
     Request: POST
     <br/>
-    Header: token
+    Auth: token
     <br/>
     Body: student_id, date, time, room
     
@@ -90,7 +90,7 @@ zitten.
     <br/>
     Request: POST
     <br/>
-    Header: token
+    Auth: token
     <br/>
     Body: date (yyyy-mm-dd), startTime (hh:mm:ss), endTime (hh:mm:ss), coach (userId), room
     
@@ -100,7 +100,7 @@ zitten.
     <br/>
     Request: POST
     <br/>
-    Header: token
+    Auth: token
     <br/>
     Body: date (yyyy-mm-dd), startTime (hh:mm:ss), endTime (hh:mm:ss), coach (userId), room, users (json array met user id's: "[4,6,8,9]")
     
@@ -110,7 +110,7 @@ zitten.
     <br/>
     Request: POST
     <br/>
-    Header: token
+    Auth: token
     <br/>
     Body: id
     
@@ -120,7 +120,7 @@ zitten.
     <br/>
     Request: POST
     <br/>
-    Header: token
+    Auth: token
     <br/>
     Body: meetingID, startTime (hh:mm:ss), endTime (hh:mm:ss)
     
@@ -130,7 +130,7 @@ zitten.
     <br/>
     Request: POST
     <br/>
-    Header: token
+    Auth: token
     <br/>
     Body: id (meetingID)
     
@@ -140,9 +140,19 @@ zitten.
     <br/>
     Request: POST
     <br/>
-    Header: token
+    Auth: token
     <br/>
     Body: email, password, firstname, insertion, lastname, role
+    
+*   <b>/admin/createnewstudent</b>
+    <br/>
+    Beschrijving: Aanmaken van een nieuw student.
+    <br/>
+    Request: POST
+    <br/>
+    Auth: token
+    <br/>
+    Body: firstname, insertion, lastname, studentNr, class, coach, parent
     
 Laatste update: 18/05/2020 Om 22:36
 
