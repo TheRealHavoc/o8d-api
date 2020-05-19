@@ -23,17 +23,15 @@
 
             if (
                 !isset($_POST['meetingID']) ||
-                !isset($_POST['startTime']) ||
-                !isset($_POST['endTime'])
+                !isset($_POST['startTime'])
             ) Response::error("Not enough form data.", 400);
 
-            $q = "INSERT INTO `blocks` (`id`, `meeting_id`, `user_id`, `start_time`, `end_time`, `available`) VALUES (NULL, :meetingID, :userID, :startTime, :endTime, '1')";
+            $q = "INSERT INTO `blocks` (`id`, `meeting_id`, `user_id`, `start_time`, `available`) VALUES (NULL, :meetingID, :userID, :startTime, '1')";
 
             $sql = $this->conn->prepare($q);
             $sql->bindParam(':meetingID', $_POST['meetingID']);
             $sql->bindParam(':userID', $userID);
             $sql->bindParam(':startTime', $_POST['startTime']);
-            $sql->bindParam(':endTime', $_POST['endTime']);
 
             try {
                 $sql->execute();
