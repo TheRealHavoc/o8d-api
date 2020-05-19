@@ -22,15 +22,15 @@
                 !isset($_POST['password'])
             ) Response::error("Not enough form data.", 400);
 
-            $params = (object) array();
+            $params = (object)array();
 
             $params->email = htmlspecialchars($_POST['email']);
             $params->password = htmlspecialchars($_POST['password']);
 
-            if(!$user = $this->getUserByEmail($params->email))
+            if (!$user = $this->getUserByEmail($params->email))
                 Response::error("You have entered the wrong credentials", 400);
 
-            if(!password_verify($params->password, $user['password']))
+            if (!password_verify($params->password, $user['password']))
                 Response::error("You have entered the wrong credentials", 400);
 
             $token = new Token();
@@ -47,7 +47,7 @@
 
         public function signout($id)
         {
-            if($this->updateToken($id, NULL))
+            if ($this->updateToken($id, NULL))
                 return true;
         }
 
@@ -65,7 +65,7 @@
                 !isset($_POST['role'])
             ) Response::error("Not enough form data.", 400);
 
-            $params = (object) array();
+            $params = (object)array();
 
             foreach ($_POST as $key => $value)
                 $params->$key = htmlspecialchars($value);
@@ -89,15 +89,16 @@
 
             try {
                 $sql->execute();
-            }
-            catch(PDOException $e)
-            {
-                Response::error(['error' => $e->getMessage()],500);
+            } catch (PDOException $e) {
+                Response::error(['error' => $e->getMessage()], 500);
             }
 
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public function createNewStudent()
         {
             if (
@@ -110,7 +111,7 @@
                 !isset($_POST['parent'])
             ) Response::error("Not enough form data.", 400);
 
-            $params = (object) array();
+            $params = (object)array();
 
             foreach ($_POST as $key => $value)
                 $params->$key = htmlspecialchars($value);
@@ -133,13 +134,35 @@
 
             try {
                 $sql->execute();
-            }
-            catch(PDOException $e)
-            {
-                Response::error(['error' => $e->getMessage()],500);
+            } catch (PDOException $e) {
+                Response::error(['error' => $e->getMessage()], 500);
             }
 
             return true;
+        }
+
+        public function indexAllUsers($withRole = null)
+        {
+            $q = "SELECT * FROM `users`";
+
+            if($withRole !== null)
+                $q .= " WHERE `role` = :role";
+
+            $sql = $this->conn->prepare($q);
+
+            if($withRole !== null)
+                $sql->bindParam(':role', $withRole);
+
+            try {
+                $sql->execute();
+            } catch (PDOException $e) {
+                Response::error(['error' => $e->getMessage()], 500);
+            }
+
+            if(!$res = $sql->fetchAll())
+                Response::error("Could not find users.", 404);
+
+            return $res;
         }
 
         private function updateToken($id, $token)

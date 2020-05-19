@@ -42,7 +42,7 @@ zitten.
     <br/>
     Beschrijving: Voor het uitloggen van gebruikers.
     <br/>
-    Request: GET
+    Request: POST
     <br/>
     Auth: token
 
@@ -80,9 +80,9 @@ zitten.
     <br/>
     Beschrijving: Tonen van ouderavonden.
     <br/>
-    Request: GET
+    Request: POST
     <br/>
-    Header: token
+    Auth: token
     
 *   <b>/meeting/add</b>
     <br/>
@@ -133,6 +133,16 @@ zitten.
     Auth: token
     <br/>
     Body: id (meetingID)
+    
+*   <b>/user/index</b>
+    <br/>
+    Beschrijving: Ophalen van gebruikers.
+    <br/>
+    Request: POST
+    <br/>
+    Auth: token
+    <br/>
+    Optional GET: role (/?role=1)
     
 *   <b>/admin/createnewuser</b>
     <br/>
