@@ -26,7 +26,7 @@ zitten.
 </ol>
 
 ## Endpoints
-<b>Host:</b> https://o8d-api.bradleyoosterveen.nl
+<b>Host:</b> http://500309.student4a7.ao-ica.nl/
 
 <b>Routes:</b>
 
