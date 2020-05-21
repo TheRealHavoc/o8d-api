@@ -70,6 +70,9 @@
             foreach ($_POST as $key => $value)
                 $params->$key = htmlspecialchars($value);
 
+            if($this->getUserByEmail($params->email))
+                Response::error("User with this e-mail already exists.", 400);
+
             $params->password = password_hash($params->password, PASSWORD_DEFAULT);
 
             $q = "
