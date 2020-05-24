@@ -144,6 +144,14 @@ zitten.
     <br/>
     Optional GET: role (/?role=1)
     
+*   <b>/auth/tokencheck</b>
+    <br/>
+    Beschrijving: Valideren van token.
+    <br/>
+    Request: POST
+    <br/>
+    Body: token
+    
 *   <b>/admin/createnewuser</b>
     <br/>
     Beschrijving: Aanmaken van een nieuwe gebruiker.
