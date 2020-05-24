@@ -20,11 +20,9 @@
         public function index($userID, $role)
         {
             if($role == 1) {
-                $q = "SELECT * FROM `meetings` INNER JOIN `blocks` ON `meetings`.`id` = `blocks`.`meeting_id` WHERE `blocks`.`user_id` = :userID";
+                $q = "SELECT * FROM `meetings` INNER JOIN `blocks` ON `meetings`.`id` = `blocks`.`meeting_id` WHERE `blocks`.`available` = 1";
 
                 $sql = $this->conn->prepare($q);
-
-                $sql->bindParam(':userID', $userID);
             } else {
                 $q = "SELECT * FROM `meetings`";
 
