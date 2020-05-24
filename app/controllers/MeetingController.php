@@ -52,7 +52,6 @@
         {
             // TODO
             // - Add validation for date and time inputs
-            // - Add check for if a meeting is already planned in a room
             // - Add check for if a coach is already planned
 
             if (
@@ -62,6 +61,14 @@
                 !isset($_POST['coach']) ||
                 !isset($_POST['room'])
             ) Response::error("Not enough form data.", 400);
+
+            $this->checkDuplicate(
+                $_POST['date'],
+                $_POST['startTime'],
+                $_POST['endTime'],
+                $_POST['coach'],
+                $_POST['room']
+            );
 
             $q = "INSERT INTO `meetings` (`id`, `date`, `start_time`, `end_time`, `coach`, `room`) VALUES (NULL, :date, :startTime, :endTime, :coach, :room);";
 
@@ -107,6 +114,36 @@
             {
                 Response::error(['error' => $e->getMessage()],500);
             }
+
+            return true;
+        }
+
+        private function checkDuplicate($date, $startTime, $endTime, $coach, $room)
+        {
+            $q = "
+                SELECT * 
+                FROM `meetings` 
+                WHERE `date` = :date
+            ";
+
+            $sql = $this->conn->prepare($q);
+            $sql->bindParam(':date', $date);
+
+            try {
+                $sql->execute();
+            }
+            catch (PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
+
+            if(!$res = $sql->fetchAll(PDO::FETCH_ASSOC))
+                return true;
+
+            foreach($res as $meeting)
+                if($meeting['room'] === $room)
+                    if($meeting['start_time'] === $startTime && $meeting['end_time'] === $endTime)
+                        Response::error("There is already a meeting in this room at this moment.", 400);
 
             return true;
         }
