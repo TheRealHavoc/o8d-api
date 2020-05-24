@@ -20,11 +20,9 @@
         public function index($userID, $role)
         {
             if($role == 1) {
-                $q = "SELECT * FROM `meetings` INNER JOIN `blocks` ON `meetings`.`id` = `blocks`.`meeting_id` WHERE `blocks`.`user_id` = :userID";
+                $q = "SELECT * FROM `meetings` INNER JOIN `blocks` ON `meetings`.`id` = `blocks`.`meeting_id` WHERE `blocks`.`available` = 1";
 
                 $sql = $this->conn->prepare($q);
-
-                $sql->bindParam(':userID', $userID);
             } else {
                 $q = "SELECT * FROM `meetings`";
 
@@ -85,6 +83,33 @@
             catch(PDOException $e)
             {
                 Response::error(['error' => $e->getMessage()],500);
+            }
+
+            $q = "INSERT INTO `blocks` (`id`, `meeting_id`, `start_time`, `available`) VALUES (NULL, :meetingID, :startTime, '1')";
+
+            $meetingID = $this->conn->lastInsertId();
+            $startTime = $_POST['startTime'];
+
+            $t = ((int)$_POST['endTime'] - (int)$_POST['startTime']) * 5;
+
+            for ($x = 0; $x <= $t; $x++) {
+                
+                $sql = $this->conn->prepare($q);
+                $sql->bindParam(':meetingID', $meetingID);
+                $sql->bindParam(':startTime', $startTime);
+                
+                try {
+                    $sql->execute();
+                }
+                catch(PDOException $e)
+                {
+                    Response::error(['error' => $e->getMessage()],500);
+                }
+
+                $time = new DateTime('2011-11-17 ' . $startTime);
+                $time->add(new DateInterval('PT' . 12 . 'M'));
+
+                $startTime = $time->format('H:i');
             }
 
             return $this->conn->lastInsertId();
