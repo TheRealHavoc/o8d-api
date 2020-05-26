@@ -22,25 +22,21 @@
             // - Return block details
 
             if (
-                !isset($_POST['meetingID']) ||
-                !isset($_POST['startTime']) ||
-                !isset($_POST['endTime'])
+                !isset($_POST['id'])
             ) Response::error("Not enough form data.", 400);
 
-            $q = "INSERT INTO `blocks` (`id`, `meeting_id`, `user_id`, `start_time`, `end_time`, `available`) VALUES (NULL, :meetingID, :userID, :startTime, :endTime, '1')";
+            $q = "UPDATE `blocks` SET `user_id` = :userID, `available` = 0 WHERE `id` = :ID";
 
             $sql = $this->conn->prepare($q);
-            $sql->bindParam(':meetingID', $_POST['meetingID']);
             $sql->bindParam(':userID', $userID);
-            $sql->bindParam(':startTime', $_POST['startTime']);
-            $sql->bindParam(':endTime', $_POST['endTime']);
+            $sql->bindParam(':ID', $_POST['id']);
 
             try {
                 $sql->execute();
             }
             catch(PDOException $e)
             {
-                Response::error(['error' => $e->getMessage()],500);
+                Response::error(['error' => $e->getMessage()] , 500);
             }
 
             return true;
