@@ -144,6 +144,20 @@
             return true;
         }
 
+        /**
+         * @return bool
+         */
+        public function uploadStudents()
+        {
+            // if (
+            //     !isset($_POST['csv'])
+            // ) Response::error("Not enough form data.", 400);
+
+            var_dump('test');
+
+            return true;
+        }
+
         public function indexAllUsers($withRole = null)
         {
             $q = "SELECT * FROM `users`";
