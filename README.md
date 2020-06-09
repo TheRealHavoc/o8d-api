@@ -171,6 +171,16 @@ zitten.
     Auth: token
     <br/>
     Body: firstname, insertion, lastname, studentNr, class, coach, parent
+
+*   <b>/admin/uploadstudents</b>
+    <br/>
+    Beschrijving: Upload Csv bestand met studentgegevens en maak nieuwe studenten aan
+    <br/>
+    Request: POST
+    <br/>
+    Auth: token
+    <br/>
+    Body: firstname, insertion, lastname, studentNr, class
     
 Laatste update: 18/05/2020 Om 22:36
 
