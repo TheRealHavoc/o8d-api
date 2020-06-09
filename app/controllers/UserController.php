@@ -148,12 +148,39 @@
          * @return bool
          */
         public function uploadStudents()
-        {
-            // if (
-            //     !isset($_POST['csv'])
-            // ) Response::error("Not enough form data.", 400);
+        {    
+            if (
+                !isset($_POST['firstname']) ||
+                !isset($_POST['insertion']) ||
+                !isset($_POST['lastname']) ||
+                !isset($_POST['studentNr']) ||
+                !isset($_POST['class'])
+            ) Response::error("Not enough form data.", 400);
 
-            var_dump('test');
+            $params = (object)array();
+
+            foreach ($_POST as $key => $value)
+                $params->$key = htmlspecialchars($value);
+
+            $q = "
+                INSERT INTO `students` 
+                    (`firstname`, `insertion`, `lastname`, `student_nr`, `class`) 
+                VALUES 
+                    (:firstname, :insertion, :lastname, :student_nr, :class)
+            ";
+
+            $sql = $this->conn->prepare($q);
+            $sql->bindParam(':firstname', $params->firstname);
+            $sql->bindParam(':insertion', $params->insertion);
+            $sql->bindParam(':lastname', $params->lastname);
+            $sql->bindParam(':student_nr', $params->studentNr);
+            $sql->bindParam(':class', $params->class);
+
+            try {
+                $sql->execute();
+            } catch (PDOException $e) {
+                Response::error(['error' => $e->getMessage()], 500);
+            }
 
             return true;
         }

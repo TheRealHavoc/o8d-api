@@ -1,5 +1,5 @@
 <?php
-    $auth = Auth::authenticateByToken($db, 3);
+    // $auth = Auth::authenticateByToken($db, 3);
 
     /**
      * Include controllers
@@ -8,5 +8,3 @@
 
     if(!$userController->uploadStudents())
         Response::error("Something went wrong",500);
-
-    Response::success("New students uploaded.");
