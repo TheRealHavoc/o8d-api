@@ -28,10 +28,12 @@
             $params->password = htmlspecialchars($_POST['password']);
 
             if (!$user = $this->getUserByEmail($params->email))
-                Response::error("You have entered the wrong credentials", 400);
+                Response::error("You have entered the wrong credentials", 401);
 
             if (!password_verify($params->password, $user['password']))
-                Response::error("You have entered the wrong credentials", 400);
+                Response::error("You have entered the wrong credentials", 401);
+
+            unset($user['password']);
 
             $token = new Token();
             $token = $token->createGeneric();
@@ -40,7 +42,9 @@
 
             $user['token'] = $token;
 
-            unset($user['password']);
+
+            if ($user['active'] == 0)
+                Response::success($token, 202);
 
             return $user;
         }
@@ -77,7 +81,7 @@
 
             $q = "
                 INSERT INTO `users` 
-                    (`id`, `firstname`, `insertion`, `lastname`, `password`, `email`, `role`, `token`) 
+                    (`id`, `firstname`, `insertion`, `lastname`, `password`, `email`, `role`, `token`)
                 VALUES 
                     (NULL, :firstname, :insertion, :lastname, :password, :email, :role, NULL)
                 ";
@@ -95,6 +99,8 @@
             } catch (PDOException $e) {
                 Response::error(['error' => $e->getMessage()], 500);
             }
+
+            Mail::newAccount($params->email, $_POST['password']);
 
             return true;
         }
