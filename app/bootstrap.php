@@ -9,6 +9,7 @@
      */
     require_once('app/helpers/Auth.php');
     require_once('app/helpers/Generate.php');
+    require_once('app/helpers/Mail.php');
     require_once('app/helpers/Response.php');
     require_once('app/helpers/Token.php');
 
