@@ -3,6 +3,8 @@
     {
         public static function newAccount($email, $password)
         {
+            $appUrl = 'http://500309.student4a7.ao-ica.nl/public_html/inplannen-login.html';
+
             $subject = '
                 ROC Midden Nederland ouderavond app inlog gegevens.
             ';
@@ -17,7 +19,7 @@
                 
                 U kunt inloggen via de onderstaande link:
                 
-                https://google.com/
+                {$appUrl}
                 
                 Bedankt!
             ";
