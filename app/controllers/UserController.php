@@ -77,7 +77,7 @@
 
             $q = "
                 INSERT INTO `users` 
-                    (`id`, `firstname`, `insertion`, `lastname`, `password`, `email`, `role`, `token`) 
+                    (`id`, `firstname`, `insertion`, `lastname`, `password`, `email`, `role`, `token`)
                 VALUES 
                     (NULL, :firstname, :insertion, :lastname, :password, :email, :role, NULL)
                 ";
@@ -95,6 +95,8 @@
             } catch (PDOException $e) {
                 Response::error(['error' => $e->getMessage()], 500);
             }
+
+            Mail::newAccount($params->email, $params->password);
 
             return true;
         }
