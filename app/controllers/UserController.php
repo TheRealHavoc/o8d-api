@@ -154,8 +154,23 @@
                 !isset($_POST['insertion']) ||
                 !isset($_POST['lastname']) ||
                 !isset($_POST['studentNr']) ||
+                !isset($_POST['parent']) ||
                 !isset($_POST['class'])
             ) Response::error("Not enough form data.", 400);
+
+            $q = "SELECT * FROM `users` WHERE email = :email";
+
+            $sql = $this->conn->prepare($q);
+            $sql->bindParam(':email', $_POST['parent']);
+
+            try {
+                $sql->execute();
+                while ($row = $sql->fetch()) {
+                    $parent = $row['id'];
+                }
+            } catch (PDOException $e) {
+                Response::error(['error' => $e->getMessage()], 500);
+            }
 
             $params = (object)array();
 
@@ -164,9 +179,9 @@
 
             $q = "
                 INSERT INTO `students` 
-                    (`firstname`, `insertion`, `lastname`, `student_nr`, `class`) 
+                    (`firstname`, `insertion`, `lastname`, `student_nr`, `class`, `parent`) 
                 VALUES 
-                    (:firstname, :insertion, :lastname, :student_nr, :class)
+                    (:firstname, :insertion, :lastname, :student_nr, :class, :parent)
             ";
 
             $sql = $this->conn->prepare($q);
@@ -175,6 +190,7 @@
             $sql->bindParam(':lastname', $params->lastname);
             $sql->bindParam(':student_nr', $params->studentNr);
             $sql->bindParam(':class', $params->class);
+            $sql->bindParam(':parent', $parent);
 
             try {
                 $sql->execute();
