@@ -152,6 +152,14 @@ zitten.
     <br/>
     Body: token
     
+*   <b>/auth/resetpassword</b>
+    <br/>
+    Beschrijving: Opnieuw instellen van wachtwoord
+    <br/>
+    Request: POST
+    <br/>
+    Body: token, password, newPassword
+    
 *   <b>/admin/createnewuser</b>
     <br/>
     Beschrijving: Aanmaken van een nieuwe gebruiker.

@@ -231,6 +231,49 @@
             return $res;
         }
 
+        public function resetPassword($token)
+        {
+            if (
+                !isset($_POST['password']) ||
+                !isset($_POST['newPassword'])
+            ) Response::error("Not enough form data.", 400);
+
+            $q = 'SELECT * FROM `users` WHERE `token` = :token';
+
+            $sql = $this->conn->prepare($q);
+
+            $sql->bindParam(':token', $token);
+
+            try {
+                $sql->execute();
+            } catch (PDOException $e) {
+                Response::error(['error' => $e->getMessage()], 500);
+            }
+
+            if(!$res = $sql->fetch(PDO::FETCH_ASSOC))
+                Response::error("Could not find users.", 404);
+
+            if (!password_verify($_POST['password'], $res['password']))
+                Response::error("You have entered the wrong credentials", 401);
+
+            $newPassword = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
+
+            $q = 'UPDATE `users` SET `password` = :newPassword WHERE `users`.`id` = :id';
+
+            $sql = $this->conn->prepare($q);
+
+            $sql->bindParam(':newPassword', $newPassword);
+            $sql->bindParam(':id', $res['id']);
+
+            try {
+                $sql->execute();
+            } catch (PDOException $e) {
+                Response::error(['error' => $e->getMessage()], 500);
+            }
+
+            return true;
+        }
+
         private function updateToken($id, $token)
         {
             $q = "UPDATE `users` SET `token` = :token WHERE `users`.`id` = :id";
