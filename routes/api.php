@@ -43,3 +43,4 @@
     $router->url('admin/createnewuser', 'pages/admin/createnewuser.php');
     $router->url('admin/createnewstudent', 'pages/admin/createnewstudent.php');
     $router->url('admin/uploadstudents', 'pages/admin/uploadstudents.php');
+    $router->url('admin/addcoach', 'pages/admin/addcoachtostudent.php');

@@ -245,6 +245,35 @@
 
             return $sql->fetch(PDO::FETCH_ASSOC);
         }
+
+        public function addCoachtoStudent()
+        {
+            if (
+                !isset($_POST['coach']) ||
+                !isset($_POST['id'])
+            ) Response::error("Not enough form data.", 400);
+
+            $params = (object)array();
+
+            foreach ($_POST as $key => $value)
+                $params->$key = htmlspecialchars($value);
+
+            $q = "UPDATE `students` SET `coach` = :coach WHERE `id` = :id";
+
+            $sql = $this->conn->prepare($q);
+            $sql->bindParam(':coach', $params->coach);
+            $sql->bindParam(':id', $params->id);
+
+            try {
+                $sql->execute();
+            }
+            catch(PDOException $e)
+            {
+                Response::error(['error' => $e->getMessage()],500);
+            }
+
+            return true;
+        }
     }
 
     $userController = new UserController($db);
