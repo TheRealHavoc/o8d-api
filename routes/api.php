@@ -11,6 +11,7 @@
     $router->url('signin', 'pages/signin.php');
     $router->url('signout', 'pages/signout.php');
     $router->url('auth/tokencheck', 'pages/auth/tokencheck.php');
+    $router->url('auth/resetpassword', 'pages/auth/resetpassword.php');
 
     /**
      * Calendar
